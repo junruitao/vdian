@@ -1,6 +1,7 @@
 package vdian.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -73,7 +74,7 @@ public class ItemResponse implements Serializable {
 
 		public String addTime;
 
-		public String[] Imgs;
+		public List<String> Imgs;
 
 		public String is_COD;
 

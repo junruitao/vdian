@@ -20,7 +20,7 @@ public class VdianExport {
 	private static final Logger log = LoggerFactory.getLogger(VdianExport.class);
 
 	public static void main(String args[]) throws Exception {
-		String userId = "710672440";
+		String userId = "334916496"; //"710672440";
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(
 				new MyGsonHttpMessageConverter());

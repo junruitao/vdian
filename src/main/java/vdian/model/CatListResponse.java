@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CatListResponse implements Serializable{
+
 	public Result[] result;
 	public Status status;
 

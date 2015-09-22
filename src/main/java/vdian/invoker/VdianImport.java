@@ -1,10 +1,13 @@
 package vdian.invoker;
 
 import java.io.File;
+import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,12 +34,31 @@ public class VdianImport {
 			log.info(cat.cate_name);
 		}
 
-		List<String> names = Stream.of(cats.result).map(o -> o.cate_name).skip(0).limit(10)
-				.collect(Collectors.toList());
-		
-		VdianService service  = new VdianService();
-		service.addCates(names);
-		
+		List<String> names = Stream.of(cats.result).map(o -> o.cate_name)
+				.skip(0).limit(10).collect(Collectors.toList());
 
+		VdianService service = new VdianService();
+//		service.addCates(names);
+		// download images
+		Stream.of(cats.result)
+				.flatMap(c -> Stream.of(c.items.result))
+				.flatMap(i -> Stream.of(i.itemInfo.result.Imgs))
+				.forEach(VdianImport::copyFile);
+				//.collect(Collectors.toList());
+		// FileUtils.copyFile(srcFile, destFile);
+
+	}
+	
+	static public void copyFile(String url){
+		log.info(url);
+		url = StringUtils.substringBeforeLast(url, "?");
+		String fileName = StringUtils.substringAfterLast(url, "/");
+		try {
+			FileUtils.copyURLToFile(new URL(url),new File("/tmp/vdian/"+fileName));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		
 	}
 }
