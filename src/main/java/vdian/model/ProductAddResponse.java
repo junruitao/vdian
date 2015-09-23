@@ -5,8 +5,8 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CatAddResponse extends VdianResponse implements Serializable{
+public class ProductAddResponse extends VdianResponse implements Serializable{
 
-	public Status status;
+	private static final long serialVersionUID = 1L;
 
 }

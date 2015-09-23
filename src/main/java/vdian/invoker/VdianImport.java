@@ -39,11 +39,14 @@ public class VdianImport {
 
 		VdianService service = new VdianService();
 //		service.addCates(names);
-		// download images
-		Stream.of(cats.result)
+		service.copyProducts(Stream.of(cats.result)
 				.flatMap(c -> Stream.of(c.items.result))
-				.flatMap(i -> Stream.of(i.itemInfo.result.Imgs))
-				.forEach(VdianImport::copyFile);
+				.collect(Collectors.toList()));
+		// download images
+//		Stream.of(cats.result)
+//				.flatMap(c -> Stream.of(c.items.result))
+//				.flatMap(i -> i.itemInfo.result.Imgs.stream())
+//				.forEach(VdianImport::copyFile);
 				//.collect(Collectors.toList());
 		// FileUtils.copyFile(srcFile, destFile);
 

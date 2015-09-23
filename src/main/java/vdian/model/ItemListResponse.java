@@ -4,10 +4,8 @@ import java.io.Serializable;
 
 
 //@JsonIgnoreProperties(ignoreUnknown = true)
-public class ItemListResponse implements Serializable{
+public class ItemListResponse extends VdianResponse implements Serializable{
 	public Result[] result;
-	public Status status;
-
 	public static class Result
 	{
 		public Result(){};

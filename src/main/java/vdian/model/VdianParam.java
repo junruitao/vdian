@@ -29,20 +29,40 @@ public class VdianParam {
 		return this;
 	}
 
+	public VdianParam addParam(Object value) {
+		return addParam("param", value);
+	}
+
 	/***
 	 * Used for adding catalog
 	 * @author frank
 	 *
 	 */
-	static public class CateParam {
+	static public class AddCateParam {
 		public Cate cates[];
 
-		public CateParam(List<String> cates) {
+		public AddCateParam(List<String> cates) {
 			this.cates = new Cate[cates.size()];
 			for (int i = 0; i < this.cates.length; i++) {
 				this.cates[i] = new Cate();
 				this.cates[i].cate_name = cates.get(i);
 			}
+		}
+	};
+
+	static public class AddProductParam {
+		List<String> imgs = new ArrayList<String>();
+		int stock = 20;
+		String price;
+		String item_name;
+		
+
+		public AddProductParam(String price, String name) {
+			this.price = price;
+			item_name = name;
+		}
+		public void addImg(String url){
+			imgs.add(url);
 		}
 	};
 

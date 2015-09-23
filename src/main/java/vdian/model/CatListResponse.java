@@ -5,10 +5,9 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CatListResponse implements Serializable{
+public class CatListResponse extends VdianResponse implements Serializable{
 
 	public Result[] result;
-	public Status status;
 
 	public static class Result {
 		public Result(){};
